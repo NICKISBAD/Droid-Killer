@@ -1,0 +1,38 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "The Droid Killer", HidePremium = false, SaveConfig = true, ConfigFolder = "By Nick"})
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+OrionLib:MakeNotification({
+	Name = "Loaded!",
+	Content = "Enjoy the Droid Killer!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+Tab:AddButton({
+	Name = "Droid Killer",
+	Callback = function()
+        while wait() do
+            for i,v in pairs(game.Workspace.Room.Enemies:GetDescendants()) do
+                if v:IsA("Humanoid") and v.Parent.Name ~= game.Players.LocalPlayer.Name then
+                    v.Health = 0
+                end
+            end
+           end
+           wait(1)
+           while wait() do
+           for i,v in pairs(game.Workspace.Room.Enemies:GetDescendants()) do
+            if v:IsA("Humanoid") and v.Parent.Name ~= game.Players.LocalPlayer.Name then
+             v.WalkSpeed = 0
+                end
+            end
+           end
+  	end
+
+})
